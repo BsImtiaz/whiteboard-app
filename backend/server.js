@@ -9,7 +9,9 @@ app.use(cors());
 const server = http.createServer(app);
 
 const io = new Server(server, {
-  cors: { origin: "*" },
+  cors: {
+    origin: "*",
+  },
 });
 
 io.on("connection", (socket) => {
@@ -24,10 +26,7 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(5000, () => {
-  console.log("Server running on port 5000");
-});
-
+// ✅ ONLY ONE LISTEN
 const PORT = process.env.PORT || 5000;
 
 server.listen(PORT, () => {
